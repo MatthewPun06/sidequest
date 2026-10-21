@@ -11,9 +11,8 @@ export const Colors = {
   light: {
     text: '#000000',
     background: '#ffffff',
-    backgroundElement: '#F0F0F3',
-    backgroundSelected: '#E0E1E6',
-    textSecondary: '#60646C',
+    primary: '#AAA4FE',
+    secondary: '#FFF9D9',
   },
   dark: {
     text: '#ffffff',
@@ -48,6 +47,7 @@ export const Fonts = Platform.select({
     serif: 'var(--font-serif)',
     rounded: 'var(--font-rounded)',
     mono: 'var(--font-mono)',
+    
   },
 });
 

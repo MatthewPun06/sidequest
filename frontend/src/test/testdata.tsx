@@ -75,6 +75,21 @@ export const convo2 : Conversation = {
     messages: []
 }
 
+export const convo3 : Conversation = {
+    name: "central park tag!",
+    event: true,
+    owner: user1,
+    participants: users,
+    messages: []
+}
+export const convo4 : Conversation = {
+    name: "pottery making",
+    event: true,
+    owner: user2,
+    participants: users,
+    messages: []
+}
+
 export const event1 : Event = {
     id: 0,
     name: "john's 21st birthday party",
@@ -132,3 +147,61 @@ export const event2 : Event = {
 }
 
 export const events = [event1, event2];
+
+export const event3 : Event = {
+    id: 2,
+    name: "central park tag!",
+    image: Image,
+    description: "play tag with us at central park! bring your friends, meet new people, and have fun!",
+    organizer: user1,
+    participants: users,
+    conversation: convo1,
+    address: "string",
+    addresslink: "string",
+    start: {
+        year: 2026,
+        month: 10,
+        day: 22,
+        hour: 21,
+        minute: 0,
+        second: 0
+    },
+    end: {
+        year: 2026,
+        month: 10,
+        day: 22,
+        hour: 23,
+        minute: 59,
+        second: 0
+    }
+}
+
+export const event4 : Event = {
+    id: 3,
+    name: "pottery making",
+    image: Image,
+    description: "the pottery shop is hosting a workshop for beginners to learn how to make pottery.",
+    organizer: user2,
+    participants: users,
+    conversation: convo4,
+    address: "string",
+    addresslink: "string",
+    start: {
+        year: 2026,
+        month: 10,
+        day: 31,
+        hour: 21,
+        minute: 0,
+        second: 0
+    },
+    end: {
+        year: 2026,
+        month: 10,
+        day: 31,
+        hour: 23,
+        minute: 59,
+        second: 0
+    }
+}
+
+export const discoverEvents = [event3, event4];

@@ -1,7 +1,13 @@
-import { NativeTabs } from 'expo-router/native-tabs';
-import { useColorScheme } from 'react-native';
-import { Home } from 'lucide-react-native'
+import { Tabs } from 'expo-router';
+import {
+  Home,
+  Search,
+  Users,
+  User,
+  Calendar,
+} from 'lucide-react-native';
 
+import { useColorScheme } from 'react-native';
 import { Colors } from '@/constants/theme';
 
 export default function AppTabs() {
@@ -9,42 +15,65 @@ export default function AppTabs() {
   const colors = Colors[scheme === 'dark' ? 'dark' : 'light'];
 
   return (
-    <NativeTabs
-      backgroundColor={colors.background}
-      labelStyle={{ selected: { color: colors.text } }}>
-      <NativeTabs.Trigger name="index">
-        <NativeTabs.Trigger.Label>Home</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon src={<Home/>} />
-      </NativeTabs.Trigger>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarActiveTintColor: colors.text,
+        tabBarInactiveTintColor: colors.text,
+        tabBarStyle: {
+          backgroundColor: colors.background,
+        },
+      }}
+    >
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, size }) => (
+            <Home color={color} size={size} />
+          ),
+        }}
+      />
 
-      <NativeTabs.Trigger name="friends">
-        <NativeTabs.Trigger.Label>Quest</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/explore.png')}
-          renderingMode="template"
-        />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="events">
-        <NativeTabs.Trigger.Label>Quest</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/explore.png')}
-          renderingMode="template"
-        />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="calendar">
-        <NativeTabs.Trigger.Label>Quest</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/explore.png')}
-          renderingMode="template"
-        />
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="user">
-        <NativeTabs.Trigger.Label>Quest</NativeTabs.Trigger.Label>
-        <NativeTabs.Trigger.Icon
-          src={require('@/assets/images/tabIcons/explore.png')}
-          renderingMode="template"
-        />
-      </NativeTabs.Trigger>
-    </NativeTabs>
+      <Tabs.Screen
+        name="friends"
+        options={{
+          title: 'Friends',
+          tabBarIcon: ({ color, size }) => (
+            <Users color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="events"
+        options={{
+          title: 'Quests',
+          tabBarIcon: ({ color, size }) => (
+            <Search color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="calendar"
+        options={{
+          title: 'Calendar',
+          tabBarIcon: ({ color, size }) => (
+            <Calendar color={color} size={size} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="user"
+        options={{
+          title: 'User',
+          tabBarIcon: ({ color, size }) => (
+            <User color={color} size={size} />
+          ),
+        }}
+      />
+    </Tabs>
   );
 }

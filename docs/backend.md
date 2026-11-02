@@ -1,7 +1,6 @@
 # Backend
 
 ## Dependencies
-
  * python
  * docker
  * sqlalchemy/postgresql
@@ -14,6 +13,7 @@
       * userid                (uuid)
       * name                  (string)
       * email                 (string)
+      * profile               (string) (filepath)
       * latitude              (float)
       * longitude             (float)
       * h3cell                (string)
@@ -39,17 +39,51 @@
       * eventid          (uuid)
       * organizer        (uuid) (foreign key)
       * calendar         (uuid) (foreign key)
+      * address          (uuid) (foreign key)
+      * conversation     (uuid) (foreign key)
+      * image            (filepath)
       * name             (string)
       * description      (string)
-      * start            (JSON) {"date": date, "datetime": datetime, "timezone": string}
-      * end              (JSON) {"date": date, "datetime": datetime, "timezone": string}
-      * location         (string)
+      * start            (datetime)
+      * end              (datetime)
+      * timezone         (string)
 
 5) EventParticipants
       * eventid          (uuid) (foreign key)
       * participantid    (uuid) (foreign key)
       * organizer        (bool)
       * decision         (string) YES | INTERESTED | NO | PENDING
+
+6) Address
+      * id                    (uuid)
+      * eventid               (uuid) (foreign key)
+      * name                  (string)
+      * formatted_address     (string)
+      * latitude              (float)
+      * longitude             (float)
+
+7) Conversation
+      * id                    (uuid)
+      * event                 (boolean)
+      * eventid               (uuid) (foreign key)
+      * name                  (string)
+      * timestamp             (datetime)
+
+8) ConversationParticipant
+      * conversation           (uuid) (foreign key)
+      * participant            (uuid) (foreign key)
+
+9) Message
+      * id                    (uuid)
+      * conversation          (uuid) (foreign key)
+      * sender                (uuid) (foreign key)
+      * content               (string) (content or filepath)
+      * image                 (boolean)
+      * timestamp             (datetime)
+      * status                (string)
+
+### MinIO
+      Buckets!
 
 ## Functionality
 
